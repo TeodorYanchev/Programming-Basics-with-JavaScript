@@ -1,9 +1,7 @@
 function radiansToDegrees(input) {
-  
-    radians = Number(input[0])
-    degrees = radians * 180 / Math.PI
-    console.log(degrees);
-
-
+let rad = Number(input[0]);
+let degrees = (rad * 180) / Math.PI;
+console.log(Math.round(degrees));
 }
-radiansToDegrees(["6.2832"])
+
+radiansToDegrees([3.1416])
