@@ -1,9 +1,10 @@
-function circleAreaAndPerimeter(input) {
-let r = Number(input[0]);
-console.log('Area = ' + Math.PI * r * r);
+function calculateCircle(r) {
+    let area = Math.PI * r * r;
+    let perimeter = 2 * Math.PI * r;
 
-console.log('Perimeter = ' + 2 * Math.PI * r);
+    let formattedArea = area.toFixed(2);
+    let formattedPerimeter = perimeter.toFixed(2);
 
+    console.log(formattedArea);
+    console.log(formattedPerimeter);
 }
-
-circleAreaAndPerimeter([10]);
