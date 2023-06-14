@@ -3,9 +3,12 @@ function trapeziodArea(input) {
     let b2 = Number(input[1]);
     let h = Number(input[2]);
 
-    let area = (b1 + b2) * h / 2;
-    console.log("Trapezoid area = " + area);
+    let trapez = (b1 + b2) * h / 2;
+    console.log(trapez.toFixed(2));
+
 
 }
 
-trapeziodArea([3, 4, 5])
+trapeziodArea(["8",
+    "13",
+    "7"]);
