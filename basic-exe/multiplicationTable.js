@@ -1,10 +1,6 @@
-function multiplicationTable(input) {
-    for (let x = 1; x <= 10; x++) {
-        for (let y = 1; y <= 10; y++){
-            console.log(`${x} * ${y} = ${x * y}`);
+function multiplicationTable(number) {
+    for(let times = 1; times <= 10; times++) {
+        let product = number * times;
+        console.log(`${number} X ${times} = ${product}`);
     }
-    }
-
 }
-
-multiplicationTable()
