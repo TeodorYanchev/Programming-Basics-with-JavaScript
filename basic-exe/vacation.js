@@ -1,52 +1,52 @@
-function vacation(input) {
-    let index = 0;
-    let vacationPrice = Number(input[index]);
-    index++;
+function vacation(people, groupType, day) {
 
-    let availableMoney = Number(input[index]);
-    index++;
+    let totalSum = 0;
 
-    let daysSpent = 0;
-    let totalDays = 0;
+    switch (groupType) {
+        case 'Students':
 
-    while (availableMoney < vacationPrice) {
-        let action = input[index];
-        index++;
-
-        let sum = Number(input[index]);
-        index++;
-
-        if (action === 'save') {
-            availableMoney += sum;
-            daysSpent = 0;
-
-        } else if (action === 'spend') {
-            if (sum > availableMoney) {
-                availableMoney = 0;
-            } else {
-                availableMoney -= sum;
+            if (day === 'Friday') {
+                totalSum = people * 8.45;
+            } else if (day === 'Saturday') {
+                totalSum = people * 9.80;
+            } else if (day === 'Sunday') {
+                totalSum = people * 10.46;
             }
 
-            daysSpent++;
-        }
-        totalDays++;
-        if (daysSpent === 5) {
-            console.log("You can't save the money.");
-            console.log(totalDays);
+            if (people >= 30) {
+                totalSum *= 0.85;
+            }
             break;
-        }
+        case 'Business':
 
+            if (people >= 100) {
+                people = people - 10;
+            }
+
+            if (day === 'Friday') {
+                totalSum = people * 10.90;
+
+            } else if (day === 'Saturday') {
+                totalSum = people * 15.60;
+            } else if (day === 'Sunday') {
+                totalSum = people * 16;
+            }
+            break;
+
+        case 'Regular':
+
+            if (day === 'Friday') {
+                totalSum = people * 15;
+            } else if (day === 'Saturday') {
+                totalSum = people * 20;
+            } else if (day === 'Sunday') {
+                totalSum = people * 22.50;
+            }
+
+            if (people >= 10 && people <= 20) {
+                totalSum *= 0.95;
+            }
+            break;
     }
-
-    if (availableMoney >= vacationPrice) {
-        console.log(`You saved the money for ${totalDays} days.`);
-    }
-
+    console.log(`Total price: ${totalSum.toFixed(2)}`);
 }
-
-vacation(["2000",
-    "1000",
-    "spend",
-    "1200",
-    "save",
-    "2000"])
