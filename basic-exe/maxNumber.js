@@ -1,22 +1,27 @@
-function maxNumber(input) {
-   let index = 0;
-   let command = input[index];
-   index++;
-   let myMaxNumber = Number.MIN_SAFE_INTEGER;
-   while(command !== "Stop"){
-    let num = Number(command);
-    if(myMaxNumber < num) {
-        myMaxNumber = num;
+function maxNumber(arr) {
+    let result = '';
+    let arrayLength = arr.length;
+
+    for (let index = 1; index <= arrayLength; index++) {
+        let isMax = true;
+
+        let currentNumber = Number(arr[index - 1]);
+
+        for (let j = index; j < arr.length; j++) {
+
+            let nextNumber = Number(arr[j]);
+            if (nextNumber >= currentNumber) {
+                isMax = false;
+                break;
+            }
+        }
+        if (isMax) {
+            result += `${currentNumber} `
+        }
     }
 
-    command = input[index];
-    index++;
-   }
-   console.log(myMaxNumber);
+
+
+    console.log(result);
 }
 
-maxNumber(["100",
-"99",
-"80",
-"70",
-"Stop"])
