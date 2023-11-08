@@ -5,3 +5,5 @@ function sumFirstAndLastArrayElements(data) {
 
     console.log(firstNumber + lastNumber);
 }
+
+sumFirstAndLastArrayElements([20, 30, 40])
