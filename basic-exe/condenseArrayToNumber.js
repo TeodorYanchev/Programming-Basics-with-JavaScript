@@ -1,12 +1,17 @@
-function condenseArrayToNumber(num) {
-    let res = [];
+function condenseArrayToNumber(arr) {
+  let curArr = arr;
 
-    while (num.length > 1) {
-        for (let index = 0; index < num.length; index++) {
-          res[index] = num[index] + num[index + 1];   
-        }
-        num = res;
-        res = [];
+  while (curArr.length > 1) {
+    let newArr = [];
+    for (let i = 0; i < curArr.length - 1; i++) {
+      let firstElement = curArr[i];
+      let secondElement = curArr[i + 1];
+
+      newArr.push(firstElement + secondElement)
     }
-    console.log(num);
+    curArr = newArr;
+  }
+  console.log(curArr[0]);
 }
+
+condenseArrayToNumber([2, 10, 3])
