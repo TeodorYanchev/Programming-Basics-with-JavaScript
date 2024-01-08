@@ -6,3 +6,5 @@ function mathPower(num, power) {
     }
     console.log(result);
 }
+
+mathPower(2,8)
