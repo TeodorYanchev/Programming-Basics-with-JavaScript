@@ -11,3 +11,5 @@ function formatGrade(grade) {
         console.log(`Excellent (${grade.toFixed(2)})`);
     }
 }
+
+formatGrade(3.33)
