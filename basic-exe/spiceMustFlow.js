@@ -16,3 +16,5 @@ function spiceMustFlow(yield) {
     console.log(days);
     console.log(totalYield);
 }
+
+spiceMustFlow(111)
