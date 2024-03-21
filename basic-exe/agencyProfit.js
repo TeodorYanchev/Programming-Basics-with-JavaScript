@@ -1,26 +1,23 @@
 function agencyProfit(input) {
 
     let airlineName = input[0];
-    let ticketAdultCount = Number(input[1]);
-    let ticketKidCount = Number(input[2]);
-    let netPriceForAdult = Number(input[3]);
+    let countTicketAdult = Number(input[1]);
+    let countKidsTicket = Number(input[2]);
+    let netTicketPriceForAdult = Number(input[3]);
     let serviceFeePrice = Number(input[4]);
 
-    let netPriceForKid = netPriceForAdult - (0.70 * netPriceForAdult);
-    let priceAfterServiceAdult = netPriceForAdult + serviceFeePrice;
-    let priceAfterServiceKid = netPriceForKid + serviceFeePrice;
+    let kidsTax = 0.3 * netTicketPriceForAdult;
+    let kidsTaxAfterService = kidsTax + serviceFeePrice;
+    let adultTaxAfterService = netTicketPriceForAdult + serviceFeePrice;
+    let totalPrice = (countKidsTicket * kidsTaxAfterService) + (countTicketAdult * adultTaxAfterService);
+    let profit = 0.2 * totalPrice;
 
-    let totalSum = (ticketKidCount * priceAfterServiceKid) + (ticketAdultCount * priceAfterServiceAdult);
+    console.log(`The profit of your agency from ${airlineName} tickets is ${profit.toFixed(2)} lv.`);
 
-    let totalProfit = 0.20 * totalSum;
-
-    console.log(`The profit of your agency from ${airlineName} tickets is ${totalProfit.toFixed(2)} lv.`);
 }
 
-agencyProfit(["WizzAir",
-    "15",
-    "5",
-    "120",
-    "40"])
-
-
+agencyProfit(["Ryanair", 
+"60", 
+"23", 
+"158.96", 
+"39.12"])
