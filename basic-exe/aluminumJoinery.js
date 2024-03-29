@@ -1,59 +1,66 @@
 function aluminumJoinery(input) {
 
-    let broiDogrami = Number(input[0]);
-    let vidNaDogramite = input[1];
-    let nachinNaPoluchavane = input[2];
+    let windowSashCount = Number(input[0]);
+    let sashWindowType = input[1];
+    let deliveryOrNot = input[2];
+    let price = 0;
 
-    if (broiDogrami < 10) {
+    if (windowSashCount < 10) {
         console.log("Invalid order");
         return;
     }
 
-    let edinichnaCenaDograma = 0;
-    let priceAfterDiscount = 0;
+    switch (sashWindowType) {
 
-    if (vidNaDogramite === '90X130') {
-        edinichnaCenaDograma = 110;
-    } else if (vidNaDogramite === '100X150') {
-        edinichnaCenaDograma = 140;
-    } else if (vidNaDogramite === '130X180') {
-        edinichnaCenaDograma = 190;
-    } else if (vidNaDogramite === '200X300') {
-        edinichnaCenaDograma = 250;
+        case '90X130':
+            price = 110 * windowSashCount;
+            if (windowSashCount > 60) {
+                price *= 0.92;
+            } else if (windowSashCount > 30) {
+                price *= 0.95;
+            }
+            break;
+
+        case '100X150':
+            price = 140 * windowSashCount;
+            if (windowSashCount > 80) {
+                price *= 0.90;
+            } else if (windowSashCount > 40) {
+                price *= 0.94;
+            }
+            break;
+        case '130X180':
+            price = 190 * windowSashCount;
+            if (windowSashCount > 50) {
+                price *= 0.88;
+            } else if (windowSashCount > 20) {
+                price *= 0.93;
+            }
+            break;
+        case '200X300':
+            price = 250 * windowSashCount;
+            if (windowSashCount > 50) {
+                price *= 0.86;
+            } else if (windowSashCount > 25) {
+                price *= 0.91;
+            }
+            break;
     }
 
-    let price = edinichnaCenaDograma * broiDogrami;
-    let discount = 0;
-
-    if (broiDogrami >= 30 && vidNaDogramite === '90X130') {
-        discount = 0.05 * price;
-    } else if (broiDogrami >= 60 && vidNaDogramite === '90X130') {
-        discount = 0.08 * price;
-    } else if (broiDogrami >= 40 && vidNaDogramite === '100X150') {
-        discount = 0.06 * price;
-    } else if (broiDogrami >= 80 && vidNaDogramite === '100X150') {
-        discount = 0.1 * price;
-    } else if (broiDogrami >= 20 && vidNaDogramite === '130X180') {
-        discount = 0.07 * price;
-    } else if (broiDogrami >= 50 && vidNaDogramite === '130X180') {
-        discount = 0.12 * price
-    } else if (broiDogrami >= 25 && vidNaDogramite === '200X300') {
-        discount = 0.09 * price;
-    } else if (broiDogrami >= 50 && vidNaDogramite === '200X300') {
-        discount = 0.14 * price;
-    }
-    priceAfterDiscount = price - discount;
-    if (nachinNaPoluchavane === 'With delivery') {
-        priceAfterDiscount += 60;
+    switch (deliveryOrNot) {
+        case "With delivery": price += 60; break;
+        case "Without delivery": price = price; break;
     }
 
-    if (broiDogrami > 99) {
-        priceAfterDiscount = priceAfterDiscount - (0.04 * priceAfterDiscount);
+
+    if (windowSashCount > 99) {
+        price *= 0.96;
     }
 
-    console.log(`${priceAfterDiscount.toFixed(2)} BGN`);
+    console.log(`${price.toFixed(2)} BGN`);
+
 }
 
-aluminumJoinery(["105",
-    "100X150",
-    "With delivery"])
+aluminumJoinery(["105", 
+"100X150", 
+"With delivery"])
