@@ -1,22 +1,40 @@
 function cinema(input) {
-    let projectionType = input[0];
-    let rows = Number(input[1]);
-    let cols = Number(input[2]);
+    let hallCapacity = Number(input[0]); 
+    let seatsLeft = hallCapacity; 
+    let totalIncome = 0; 
 
-    let places = rows * cols;
-    let income = 0;
+    for (let index = 1; index < input.length; index++) {
+        let visitors = Number(input[index]); 
 
-    if(projectionType === 'Premiere') {
-        income = places * 12.00;
-    } else if(projectionType === 'Normal') {
-        income = places * 7.50;
-    } else {
-        income = places * 5.00;
-    } 
-    console.log(`${income.toFixed(2)} leva`);
+        if (visitors > seatsLeft) {
+            console.log("The cinema is full."); 
+            console.log(`Cinema income - ${totalIncome} lv.`);
+            return;
+        }
 
+        let currentIncome = visitors * 5; 
+
+       
+        if (visitors % 3 === 0) {
+            currentIncome -= 5;
+        }
+
+        totalIncome += currentIncome; 
+        seatsLeft -= visitors; 
+
+        if (input[index + 1] === "Movie time!") {
+            console.log(`There are ${seatsLeft} seats left in the cinema.`);
+            console.log(`Cinema income - ${totalIncome} lv.`);
+            return;
+        }
+    }
 }
 
-cinema(["Premiere",
-"10",
-"12"])
+cinema(['100',
+    '15',
+    '15',
+    '15',
+    '15',
+    '15',
+    '15',
+    '15'])
