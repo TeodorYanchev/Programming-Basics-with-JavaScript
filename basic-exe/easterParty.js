@@ -1,32 +1,32 @@
-function easterParty(input) {
+function calculateFoodStats(input) {
+    const pricePerKg = 12.45;
+    let totalFood = 0;
+    let groups = [0, 0, 0]; 
 
-    let guests = Number(input[0]);
-    let pricePerPerson = Number(input[1]);
-    let budgetDessy = Number(input[2]);
-    
-    if (guests < 10) {
-        pricePerPerson = pricePerPerson;
-    } else if (guests <= 15) {
-        pricePerPerson *= 0.85;
-    } else if (guests < 21) {
-        pricePerPerson *= 0.80;
-    } else if (guests > 21) {
-        pricePerPerson *= 0.75
+    for (const foodAmountStr of input.slice(1)) {
+        const foodAmount = Number(foodAmountStr);
+        if (foodAmount >= 100 && foodAmount <= 200) {
+            groups[0]++; 
+        } else if (foodAmount > 200 && foodAmount <= 300) { 
+            groups[1]++; 
+        } else {
+            groups[2]++; 
+        }
+        totalFood += foodAmount;
     }
 
-    let cake = 0.1 * budgetDessy;
-    let placeSetting = guests * pricePerPerson;
-    let totalPrice = placeSetting + cake;
+    const totalPrice = (totalFood / 1000) * pricePerKg;
 
-    if (budgetDessy >= totalPrice) {
-        let moneyLeft = budgetDessy - totalPrice;
-        console.log(`It is party time! ${moneyLeft.toFixed(2)} leva left.`);
-    } else {
-        let moneyNeeded = totalPrice - budgetDessy;
-        console.log(`No party! ${moneyNeeded.toFixed(2)} leva needed.`);
-    }
+    console.log(`Group 1: ${groups[0]} cats.`);
+    console.log(`Group 2: ${groups[1]} cats.`);
+    console.log(`Group 3: ${groups[2]} cats.`);
+    console.log(`Price for food per day: ${totalPrice.toFixed(2)} lv.`);
 }
 
-easterParty(["8",
-    "25",
-    "340"])
+calculateFoodStats(["6", 
+"102", 
+"236", 
+"123", 
+"399", 
+"342",  
+"222"]) 
