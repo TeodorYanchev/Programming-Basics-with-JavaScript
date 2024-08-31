@@ -5,3 +5,4 @@ function firstAndLastKNumbers(data) {
     console.log(firstK.join(" "));
     console.log(lastK.join(" "));
 }
+
