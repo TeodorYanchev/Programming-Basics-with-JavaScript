@@ -1,14 +1,23 @@
-function addAndSubtract(firstNumber, secondNumber, thirdNumber) {
+function addAndSubtract(input) {
+    let sumOldArray = 0;
+    let sumNewArray = 0;
+    let arrayLength = input.length;
 
-    function sum(firstNumber, secondNumber) {
-           return firstNumber + secondNumber;
+    for (let index = 0; index < arrayLength; index++) {
+        let currentNumber = Number(input[index]);
+        sumOldArray += currentNumber;
 
+        if (currentNumber % 2 === 0) {
+            currentNumber += index;
+        } else {
+            currentNumber -= index;
+        }
+        input[index] = currentNumber;
+        sumNewArray += currentNumber;
     }
-
-    let sumResult = sum(firstNumber, secondNumber);
-
-    function subtract(sumResult, thirdNumber) {
-        return sumResult - thirdNumber;
-    }
-    return subtract(sumResult, thirdNumber);
+    console.log(input);
+    console.log(sumOldArray);
+    console.log(sumNewArray);
 }
+
+addAndSubtract([5, 15, 23, 56, 35])
